@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: terraria-deployment
+  labels:
+    app: terraria
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: terraria
+  template:
+    metadata:
+      labels:
+        app: terraria
+    spec:
+      containers:
+      - name: terraria
+        image: jontrossbach/t-v1
+        ports:
+        - containerPort: 7777
+        stdin: true
+        tty: true
